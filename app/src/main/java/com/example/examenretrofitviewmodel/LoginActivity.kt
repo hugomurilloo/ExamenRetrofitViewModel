@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.*
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 
 class LoginActivity : AppCompatActivity() {
 
@@ -15,6 +16,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
     private lateinit var btnLogin: Button
+
+    private lateinit var ivLogo: ImageView
 
 
 
@@ -31,10 +34,18 @@ class LoginActivity : AppCompatActivity() {
         etEmail = findViewById(R.id.etEmail)
         etPassword = findViewById(R.id.etPassword)
         btnLogin = findViewById(R.id.btnLogin)
+        ivLogo = findViewById(R.id.ivLogo)
+
+        Glide.with(this)
+            .load("https://oracleitic.mooo.com/imatges/inici.jpg")
+            .placeholder(R.drawable.ic_lock)
+            .error(R.drawable.ic_trash)
+            .into(ivLogo)
 
     }
 
     private fun observeViewModel() {
+
 
 
 
