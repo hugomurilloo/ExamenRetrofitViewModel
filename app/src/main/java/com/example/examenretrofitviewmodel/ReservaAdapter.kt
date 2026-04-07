@@ -7,6 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import java.text.SimpleDateFormat
+import java.util.Locale
 import kotlin.text.split
 
 class ReservaAdapter : RecyclerView.Adapter<ReservaAdapter.ReservaViewHolder>() {
@@ -42,11 +44,21 @@ class ReservaAdapter : RecyclerView.Adapter<ReservaAdapter.ReservaViewHolder>() 
 
         val ivMaterial = view.findViewById<ImageView>(R.id.ivMaterial)
 
+        fun String.toDisplayDate(): String {
+            val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            val outputFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+            return try {
+                val date = inputFormat.parse(this)
+                outputFormat.format(date!!)
+            } catch (e: Exception) {
+                this
+            }
+        }
         fun bind(reserva: Reserva) {
             tvMaterial.text = reserva.descripcio ?: "Material #${reserva.idmaterial}"
             // Limpiamos la fecha que viene con T00:00:00
-            val inici = reserva.datareserva.split("T")[0]
-            val fi = reserva.datafinal.split("T")[0]
+            val inici = reserva.datareserva.toDisplayDate()
+            val fi = reserva.datafinal.toDisplayDate()
             tvDates.text = "$inici  ➔  $fi"
 
         }

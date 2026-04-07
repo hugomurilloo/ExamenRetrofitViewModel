@@ -8,7 +8,8 @@ import java.security.cert.X509Certificate
 import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
-
+import java.text.SimpleDateFormat
+import java.util.Locale
 class ItemAPI {
     companion object {
         private var ItemAPI: ApiService? = null
@@ -32,6 +33,7 @@ class ItemAPI {
             }
             return ItemAPI!!
         }
+
         private fun getUnsafeOkHttpClient(): OkHttpClient {
             try {
                 val trustAllCerts = arrayOf<TrustManager>(
