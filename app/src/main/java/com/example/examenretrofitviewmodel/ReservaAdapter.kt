@@ -3,8 +3,10 @@ package com.example.examenretrofitviewmodel
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kotlin.text.split
 
 class ReservaAdapter : RecyclerView.Adapter<ReservaAdapter.ReservaViewHolder>() {
@@ -22,7 +24,14 @@ class ReservaAdapter : RecyclerView.Adapter<ReservaAdapter.ReservaViewHolder>() 
     }
 
     override fun onBindViewHolder(holder: ReservaViewHolder, position: Int) {
+        val item = reserves[position]
         holder.bind(reserves[position])
+
+        Glide.with(holder.itemView.context)
+            .load(item.imatge)
+            .placeholder(R.drawable.ic_lock)
+            .error(R.drawable.ic_trash)
+            .into(holder.ivMaterial)
     }
 
     override fun getItemCount() = reserves.size
@@ -31,12 +40,15 @@ class ReservaAdapter : RecyclerView.Adapter<ReservaAdapter.ReservaViewHolder>() 
         val tvMaterial = view.findViewById<TextView>(R.id.tvReservaMaterial)
         val tvDates = view.findViewById<TextView>(R.id.tvReservaDates)
 
+        val ivMaterial = view.findViewById<ImageView>(R.id.ivMaterial)
+
         fun bind(reserva: Reserva) {
             tvMaterial.text = reserva.descripcio ?: "Material #${reserva.idmaterial}"
             // Limpiamos la fecha que viene con T00:00:00
             val inici = reserva.datareserva.split("T")[0]
             val fi = reserva.datafinal.split("T")[0]
             tvDates.text = "$inici  ➔  $fi"
+
         }
     }
 }

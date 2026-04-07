@@ -1,7 +1,9 @@
 package com.example.examenretrofitviewmodel
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -12,12 +14,13 @@ class ReservesActivity : AppCompatActivity() {
 
     private val viewModel: MaterialsViewModel by viewModels()
 
-
     private lateinit var adapter: ReservaAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reserves)
+
+
 
 
 
@@ -35,8 +38,13 @@ class ReservesActivity : AppCompatActivity() {
                 Toast.makeText(this, "No tens reserves", Toast.LENGTH_SHORT).show()
             }
             adapter.submitList(llista)
+
         }
 
         viewModel.carregarReservesUsuari()
+
+
     }
+
+
 }
