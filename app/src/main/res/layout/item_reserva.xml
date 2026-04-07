@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    app:cardBackgroundColor="#F4F4F5"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="0dp"
+    app:strokeWidth="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp">
+
+        <!-- Imatge del material (carregada amb Glide) -->
+        <ImageView
+            android:id="@+id/ivMaterial"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/bg_image_rounded"
+            android:clipToOutline="true" />
+
+        <!-- Info de la reserva -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="14dp">
+
+            <!-- Descripcio del material -->
+            <TextView
+                android:id="@+id/tvReservaMaterial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Portatil HP"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#18181B"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+            <!-- Dates de la reserva -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="4dp">
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/ic_calendar"
+                    app:tint="#8B5CF6" />
+
+                <TextView
+                    android:id="@+id/tvReservaDates"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="16/03 - 23/03/2026"
+                    android:textSize="12sp"
+                    android:textColor="#71717A"
+                    android:layout_marginStart="6dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Boto esborrar -->
+        <ImageButton
+            android:id="@+id/btnDelete"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_trash"
+            android:background="@drawable/bg_delete_button"
+            android:contentDescription="Esborrar reserva"
+            android:padding="10dp"
+            app:tint="#EF4444" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
