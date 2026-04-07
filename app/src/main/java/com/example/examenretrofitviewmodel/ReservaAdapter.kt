@@ -44,6 +44,7 @@ class ReservaAdapter : RecyclerView.Adapter<ReservaAdapter.ReservaViewHolder>() 
 
         val ivMaterial = view.findViewById<ImageView>(R.id.ivMaterial)
 
+        //toDisplayDate
         fun String.toDisplayDate(): String {
             val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
             val outputFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
@@ -54,13 +55,13 @@ class ReservaAdapter : RecyclerView.Adapter<ReservaAdapter.ReservaViewHolder>() 
                 this
             }
         }
+
         fun bind(reserva: Reserva) {
             tvMaterial.text = reserva.descripcio ?: "Material #${reserva.idmaterial}"
             // Limpiamos la fecha que viene con T00:00:00
             val inici = reserva.datareserva.toDisplayDate()
             val fi = reserva.datafinal.toDisplayDate()
             tvDates.text = "$inici  ➔  $fi"
-
         }
     }
 }
